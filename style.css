@@ -1,0 +1,139 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #e0f7fa; /* A light teal background */
+}
+
+h1 {
+    font-size: 3.5em;
+    color: #004d40; /* Darker teal for contrast */
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 120px);
+    grid-template-rows: repeat(3, 120px);
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+.board-wrapper {
+    position: relative;
+}
+
+.cell {
+    width: 120px;
+    height: 120px;
+    background-color: #fff;
+    border: 2px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
+    cursor: pointer;
+}
+
+.board:focus {
+    outline: none;
+}
+
+.cell[data-player="X"] {
+    color: #007bff; /* Blue */
+}
+
+.cell[data-player="O"] {
+    color: #dc3545; /* Red */
+}
+
+.cell:focus {
+    outline: 3px solid #007bff;
+}
+
+.status {
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.buttons button {
+    padding: 10px 20px;
+    font-size: 1em;
+    color: white;
+    background-color: #00796b; /* A nice teal */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 10px;
+    transition: background-color 0.3s;
+}
+
+.buttons button:hover {
+    background-color: #004d40; /* Darker teal on hover */
+}
+
+/* Winning Line Styles */
+.win-line-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Allows clicks to pass through to the board */
+}
+
+.win-line {
+    stroke: black;
+    stroke-width: 8;
+    stroke-linecap: round;
+    /* Controlled by JS */
+    visibility: hidden;
+}
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    /* The following properties center the modal's content. */
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    padding: 20px;
+    border: 2px solid #00796b;
+    width: 80%;
+    max-width: 500px;
+    position: relative;
+    border-radius: 5px;
+}
+
+.modal-content h2 {
+    color: #004d40;
+    margin-top: 0;
+}
+
+.close-btn {
+    color: #00796b;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #004d40;
+    text-decoration: none;
+    cursor: pointer;
+}
